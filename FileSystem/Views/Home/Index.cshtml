@@ -1,0 +1,10 @@
+﻿@model List<Folder>
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+@foreach(var folder in Model){
+    <div>
+        <a asp-action="Folder" asp-route-id="@folder.Id">@folder.Name</a>
+    </div>
+}

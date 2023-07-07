@@ -1,0 +1,108 @@
+{
+  "$id": "1",
+  "$values": [
+    {
+      "$id": "2",
+      "Id": 1,
+      "Name": "Creating Digital Images",
+      "ParentFolder": null,
+      "SubFolders": {
+        "$id": "3",
+        "$values": [
+          {
+            "$id": "4",
+            "Id": 2,
+            "Name": "Resources",
+            "ParentFolder": {
+              "$ref": "2"
+            },
+            "SubFolders": {
+              "$id": "5",
+              "$values": [
+                {
+                  "$id": "6",
+                  "Id": 5,
+                  "Name": "Primary Sources",
+                  "ParentFolder": {
+                    "$ref": "4"
+                  },
+                  "SubFolders": null
+                },
+                {
+                  "$id": "7",
+                  "Id": 6,
+                  "Name": "Secondary Sources",
+                  "ParentFolder": {
+                    "$ref": "4"
+                  },
+                  "SubFolders": null
+                }
+              ]
+            }
+          },
+          {
+            "$id": "8",
+            "Id": 3,
+            "Name": "Evidence",
+            "ParentFolder": {
+              "$ref": "2"
+            },
+            "SubFolders": null
+          },
+          {
+            "$id": "9",
+            "Id": 4,
+            "Name": "Graphic Products",
+            "ParentFolder": {
+              "$ref": "2"
+            },
+            "SubFolders": {
+              "$id": "10",
+              "$values": [
+                {
+                  "$id": "11",
+                  "Id": 7,
+                  "Name": "Process",
+                  "ParentFolder": {
+                    "$ref": "9"
+                  },
+                  "SubFolders": null
+                },
+                {
+                  "$id": "12",
+                  "Id": 8,
+                  "Name": "Final Product",
+                  "ParentFolder": {
+                    "$ref": "9"
+                  },
+                  "SubFolders": null
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "$ref": "4"
+    },
+    {
+      "$ref": "8"
+    },
+    {
+      "$ref": "9"
+    },
+    {
+      "$ref": "6"
+    },
+    {
+      "$ref": "7"
+    },
+    {
+      "$ref": "11"
+    },
+    {
+      "$ref": "12"
+    }
+  ]
+}

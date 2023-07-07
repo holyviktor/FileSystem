@@ -1,0 +1,26 @@
+﻿@model Folder
+@{
+    ViewData["Title"] = "Folder Page";
+}
+<h1>Folder - "@Model.Name"</h1>
+@if (Model.SubFolders!.Count != 0)
+{
+    @foreach (var subfolder in Model.SubFolders)
+    {
+        <div>
+            <a asp-action="Folder" asp-route-id="@subfolder.Id">@subfolder.Name</a>
+        </div>
+    }
+
+}
+else
+{
+    <div>No subfolders</div>
+}
+
+@if (Model.ParentFolder != null)
+{
+    <a asp-action="Folder" asp-route-id="@Model.ParentFolder.Id">To parent folder - "@Model.ParentFolder.Name"</a>
+}
+
+

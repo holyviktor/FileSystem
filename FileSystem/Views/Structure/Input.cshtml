@@ -1,0 +1,12 @@
+﻿
+@{
+    ViewData["Title"] = "Input Page";
+}
+@if (!string.IsNullOrEmpty(ViewBag.Message))
+{
+    <div>@ViewBag.Message</div>
+}
+<form asp-action="InputFile" method="post" enctype="multipart/form-data">
+    <input type="file" name="inputFile" required="required"/>
+    <button type="submit">Send</button>
+</form> 

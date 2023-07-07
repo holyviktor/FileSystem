@@ -10,15 +10,11 @@ namespace FileSystem.Controllers
 {
     public class StructureController : Controller
     {
-        private readonly ILogger<StructureController> _logger;
         private readonly FileSystemDbContext _context;
-        private readonly IWebHostEnvironment _appEnvironment;
 
-        public StructureController(ILogger<StructureController> logger, FileSystemDbContext context, IWebHostEnvironment appEnvironment)
+        public StructureController(FileSystemDbContext context)
         {
-            _logger = logger;
             _context = context;
-            _appEnvironment = appEnvironment;
         }
 
         public IActionResult Input()
@@ -33,11 +29,11 @@ namespace FileSystem.Controllers
             var formFile = Request.Form.Files[0];
             if (formFile == null)
             {
-                viewMsg = "Файл не вибрано";
+                viewMsg = "No file selected";
             }
             else if (formFile.FileName.Split('.').Last() != "json")
             {
-                viewMsg = "Файл повинен бути типу json";
+                viewMsg = "The file must be of json type";
             }
             else
             {
@@ -56,13 +52,13 @@ namespace FileSystem.Controllers
                 }
                 catch(Exception)
                 {
-                    viewMsg = "Не вдалося декодувати json";
+                    viewMsg = "Failed to deserialize json";
                     ViewBag.Message = viewMsg;
                     return View("Input");
                 }
                 if (valuesFolder == null)
                 {
-                    viewMsg = "Файл не містить папок";                 
+                    viewMsg = "The file does not contain folders";                 
                 }
                 else
                 {
@@ -75,11 +71,10 @@ namespace FileSystem.Controllers
                     {
                         _context.Add(value);
                     }
-                    _context.SaveChanges();
-                    viewMsg = "Успішно імпоровано";
+                    await _context.SaveChangesAsync();
+                    viewMsg = "Imported successfully";
                 }
             }
-            Console.WriteLine(viewMsg);
             ViewBag.Message = viewMsg;
             return View("Input");
         }
@@ -88,8 +83,7 @@ namespace FileSystem.Controllers
         {
             return View();
         }
-
-
+        
         public IActionResult OutputFile()
         {
             var folders = _context.Folders.ToList();
